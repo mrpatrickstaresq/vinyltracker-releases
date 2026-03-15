@@ -10,6 +10,10 @@ A native macOS app for managing your vinyl record collection.
 2. Open the DMG and drag VinylTracker to Applications
 3. Launch from Applications
 
+## Uninstall
+
+Drag **VinylTracker.app** from your Applications folder to the Trash. An uninstaller script is also included inside the DMG — double-click `Uninstall VinylTracker.command` to remove the app and all associated data files in one step.
+
 ## Requirements
 
 - macOS 12 Monterey or later
