@@ -119,6 +119,7 @@ Three-column layout as the default launch tab:
   - Bigram extraction catches multi-word artist/album names (Pink Floyd, Miles Davis, etc.)
   - Decade detection: "70s", "1970s", "seventies" → year-range filter applied to query
   - Fallback: collections ≤ 75 records always get the full list
+- **AI can be fully disabled** via Settings → AI Features checkbox — removes the Ask AI tab and all AI functionality; re-enabling restores everything instantly
 
 ### 🎛️ Turntable Management
 - Add, edit, and delete turntables (manufacturer, model, cartridge, stylus)
@@ -140,10 +141,11 @@ Three-column layout as the default launch tab:
 - Claude API key configuration
 - Last.fm API key bundled and auto-stored on first launch (no user configuration required)
 - Backend selection: Claude API or any of the 5 local models
+- **AI Features toggle**: checkbox to disable all AI functionality and remove the Ask AI tab; re-enable to restore
 - **Danger Zone**: "Clear All Local Data" removes the database, artwork cache, and all downloaded model caches, then quits
 
 ### 🎨 Appearance
-- **17 selectable color themes**: System, Light, Default, Warm, Ocean, Purple, Midnight, Sunset, Forest, Rose, Nord, Dracula, Monokai, Espresso, Cherry, Cobalt, Slate
+- **19 selectable color themes**: System, Light, Default, Warm, Ocean, Purple, Midnight, Sunset, OG Green Console, Rose, Nord, Dracula, Monokai, Espresso, Cherry, Cobalt, Slate, Reggae, Metal
 - Theme applies instantly across all widgets and persists across launches
 - macOS standard close behaviour: red X hides the window; clicking the Dock icon restores it
 - Window size, position, and all panel splitter sizes remembered across launches
