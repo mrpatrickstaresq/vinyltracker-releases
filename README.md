@@ -18,12 +18,149 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 
 - macOS 12 Monterey or later
 
+---
+
 ## Features
 
-- Import your collection from Discogs
-- Cover art fetched automatically
-- Tracklists, play logging, listening queue
-- Album anniversary panel
-- Stats and charts
-- AI chat assistant
-- Multiple themes
+### 📀 Collection Management
+- Import your vinyl collection from a Discogs CSV export or via direct Discogs API sync
+- Duplicate detection by catalog number or artist/title
+- Real-time search filtering across artist, title, genre, style, and label
+- Sortable table view with live record count display
+- Context menu to clear play history per album
+
+### 🖼️ Cover Art & Artwork
+- Cover art fetched from the Discogs release endpoint using the primary front-cover image
+- Falls back to MusicBrainz / Cover Art Archive as a secondary source
+- Per-record on-demand background fetch when an album is selected
+- Background batch sync for missing artwork — pre-checks the database to avoid redundant API calls
+- **Tools → Sync Album Artwork**: fetches art only for records missing it, with status bar progress
+- **Tools → Sync Tracklists**: fetches tracklists only for records missing them
+
+### 🎵 Metadata Enrichment
+- Original release year sourced from MusicBrainz (first-release-date); falls back to Last.fm — Discogs year ignored
+- Album runtime calculated from track durations
+- Full tracklist with vinyl side grouping (Side A, B, C…)
+- Genre and style aggregation
+
+### ▶️ Now Playing Panel
+- Large 360px cover art with placeholder fallback
+- Album details: label, format, year, genre, style
+- Full tracklist grouped by vinyl side
+- Last logged play timestamp
+- **Log Play** button with optional turntable selection
+- **＋ Queue** button — adds the album to your personal Listening Queue; shows "✓ Queued" when already queued
+
+### 📋 Play History
+- Sortable table (date, artist, title, turntable, runtime)
+- Multi-select and delete entries
+- Context menu: delete entries or clear all history for an album
+- Clear all history button with confirmation
+
+### 🏠 Home Dashboard
+Three-column layout as the default launch tab:
+
+**Left pane** (user-resizable splitter):
+- *Last Played* — cover art, artist/title, play timestamp, metadata grid, full tracklist; click cover to jump to that record
+- *Most Recently Played 15 Albums* — scrollable list of your 15 most recently played distinct albums with 40px cover thumbnails; click any row to navigate to that album
+
+**Center pane** (user-resizable splitter):
+- *Suggested Spins* — random album suggestion ("You be the algorithm!"); never-played albums weighted 7×, albums unplayed 6+ months weighted 3×; Log Play, Skip, and ＋ Queue buttons; shows "Never been played" or "Last played N days ago"; auto-advances after logging; full tracklist shown
+- *Album Anniversary* — highlights an album released exactly 10/20/30/40/50/60 years ago; large 220px cover, anniversary badge, Last.fm summary, full tracklist; Refresh button for another pick; click cover to navigate
+
+**Right pane:**
+- *Listening Queue* (see below)
+
+### 🎧 Listening Queue
+- Persistent across sessions (SQLite-backed), right pane of the Home tab
+- **My Listening Queue** (manual): user-curated ordered list of up to 50 albums
+  - Row: drag handle (⠿), position number, 40px cover thumbnail, artist — title
+  - Drag to reorder; new order persisted immediately
+  - ▶ Log Play logs a play and removes the entry; ✕ removes without logging
+  - "Clear All" button in the section header
+- **Suggested** (auto): 20 albums not played in 182+ days (or never played), randomised on each load
+  - No duplicate artists — at most one album per artist in the suggestions
+  - Auto-refreshes on launch; ↻ Refresh button for a new random set
+  - ＋ Queue button on each row to add to your personal queue
+
+### 📊 Statistics Dashboard
+- **Collection Overview**: total records, unique artists, never-played count, average album runtime
+- **Play History Overview**: total plays, total listening time, plays this month, best month ever
+- Most Played Artists and Albums (top 10 each, side by side)
+- Plays by Genre and Plays by Month (last 12 months)
+- Plays by Day of Week breakdown
+- Recently Added to Collection: last 10 records with artist, title, year, and date added
+- Refresh button to reload all stats on demand
+
+### 🎂 Album Anniversary Panel
+- Highlights a random album from your collection released exactly 10, 20, 30, 40, 50, or 60 years ago
+- Anniversary based on the original first release year (MusicBrainz primary, Last.fm secondary — never Discogs date)
+- Large centered 220px cover art, anniversary badge ("🎉 N Year Anniversary · YYYY"), metadata grid, Last.fm album summary, and full tracklist
+- Random selection on each launch; Refresh (↻) button for another pick from the same year set
+- Click cover art to navigate to that record in the Collection tab
+
+### 🗓️ Release Date Sync
+- **Tools → Fetch MusicBrainz Release Dates**: batch cross-references your entire collection against MusicBrainz; stores original first-release year; progress shown in status bar; updates collection table in real time
+- **Tools → Fetch Last.fm Release Dates**: batch fetch from Last.fm album.getInfo; only updates records with no MusicBrainz year (preserving MB-first priority)
+
+### 🤖 AI Chat Assistant
+- Dedicated **Ask AI** tab powered by the Claude API (Sonnet) with streaming responses
+- Five selectable offline local models (Apple Silicon via MLX):
+  - Llama 3.2 3B 4-bit (~1.8 GB) — balanced quality/speed
+  - Qwen 2.5 3B 4-bit (~1.8 GB) — stronger structured-data Q&A
+  - Phi-3.5 Mini 4-bit (~2.2 GB) — Microsoft 3.8B
+  - Gemma 3 4B 4-bit (~2.5 GB) — Google, excellent reasoning
+  - Qwen 2.5 1.5B 4-bit (~1.0 GB) — fastest, ideal for 8 GB RAM Macs
+- Speculative decoding for ~2-3× generation speedup (paired draft models)
+- Persistent model subprocess — stays loaded across tab switches
+- Chart generation (bar/pie) on request
+- Context-aware queries: play history, album lookup, statistics
+- Keyword-filtered album context: only sends matching records instead of your full collection (cuts tokens ~90%)
+  - Bigram extraction catches multi-word artist/album names (Pink Floyd, Miles Davis, etc.)
+  - Decade detection: "70s", "1970s", "seventies" → year-range filter applied to query
+  - Fallback: collections ≤ 75 records always get the full list
+
+### 🎛️ Turntable Management
+- Add, edit, and delete turntables (manufacturer, model, cartridge, stylus)
+- Per-play turntable tracking
+- Play count and total listening hours per turntable
+
+### 🗂️ Navigation
+- macOS menu bar: Collection, Tools, View (themes), and Tabs menus
+- Keyboard shortcuts: ⌘1–4 to switch tabs, ⌘, for Settings
+- **Detachable tabs** — three ways to pop any tab into its own window:
+  - Drag a tab outside the tab bar
+  - Right-click a tab → "Open in New Window"
+  - Tabs menu → "Detach Current Tab" (⌘⇧D)
+  - Closing the detached window re-docks the tab back into the main bar
+  - "Reattach All Windows" in the Tabs menu re-docks all floating tabs at once
+
+### ⚙️ Settings & Authentication
+- Discogs username and personal access token storage
+- Claude API key configuration
+- Last.fm API key bundled and auto-stored on first launch (no user configuration required)
+- Backend selection: Claude API or any of the 5 local models
+- **Danger Zone**: "Clear All Local Data" removes the database, artwork cache, and all downloaded model caches, then quits
+
+### 🎨 Appearance
+- **17 selectable color themes**: System, Light, Default, Warm, Ocean, Purple, Midnight, Sunset, Forest, Rose, Nord, Dracula, Monokai, Espresso, Cherry, Cobalt, Slate
+- Theme applies instantly across all widgets and persists across launches
+- macOS standard close behaviour: red X hides the window; clicking the Dock icon restores it
+- Window size, position, and all panel splitter sizes remembered across launches
+- Large, readable fonts throughout (18–20pt artist names, 28px metric cards)
+- Skeuomorphic app icon: royal-blue plinth, near-black vinyl, chrome tonearm
+
+### 🚀 Performance
+- SQLite WAL journal mode: readers never block background writers
+- 32 MB page cache — hot pages stay in RAM between queries
+- 256 MB memory-mapped I/O — large cover art BLOBs stream via kernel mapping
+- Two-pass query design for suggested album and queue fetches (metadata first, BLOBs only for final rows)
+- Indexes on artist/title and original_year/year — applied automatically on first launch
+- Artwork/tracklist batch sync: ~1.1 s/record (authenticated) — safely under Discogs rate limits
+
+### 🗑️ Uninstall
+- Included `Uninstall VinylTracker.command` script in the DMG (double-click to run)
+- Three modes: Complete Uninstall, Remove App Only, or Free Disk Space (AI model caches only)
+- Detects and offers to quit a running instance before removing files
+- Shows disk size of each item and prompts before each deletion
+- Detects and offers removal of any other Hugging Face model caches on the machine
