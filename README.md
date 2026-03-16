@@ -62,10 +62,10 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 
 ### ▶️ Now Playing Panel
 - Large 360px cover art with placeholder fallback
-- Album details: label, format, year, genre, style
-- Full tracklist grouped by vinyl side
-- Last logged play timestamp
-- Pressing Details section: country, mastering credits, pressing plant, matrix/runout, personnel, barcodes, liner notes
+- Sections in order: cover → artist/title → Log Play controls → Album Details → Tracklist → Pressing Details → Personnel Credits → Barcodes → Liner Notes
+- **Album Details** metadata grid: Genre · Style · Year · Label · Format · Country · Runtime
+- Full tracklist (all tracks, no cap)
+- Pressing Details, Personnel Credits, Barcodes, and Liner Notes loaded from cache instantly; auto-synced in background if missing — no manual sync required
 - **Log Play** button with turntable selector — pre-selects your default turntable automatically
 - **＋ My Listening Queue** button — adds album to queue; queue panel refreshes immediately
 
@@ -168,7 +168,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Two-pass query design for suggested album and queue fetches
 - Indexes on artist/title and original_year/year — applied automatically on first launch
 - Sync operations show time estimates before starting
-- Write-behind batch DB optimisations across all sync workers: tracklist/runtime/year in one transaction; MusicBrainz and Last.fm year updates batched every 20 records (~20× fewer lock acquisitions)
+- Write-behind batch DB optimisations across all sync workers
 
 ### 🗑️ Uninstall
 - Included `Uninstall VinylTracker.command` script in the DMG (double-click to run)
