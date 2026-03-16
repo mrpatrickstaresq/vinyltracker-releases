@@ -30,6 +30,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Context menu to clear play history per album
 - **Refresh Collection** syncs your Discogs collection and shows a preview dialog before saving any changes — lists new records (green), removed records (red), and metadata updates (amber) with Accept or Keep As-Is buttons
 - "Always apply changes without preview" option in Settings to skip the diff dialog and apply immediately
+- **Export Collection as CSV**: Collection → Export Collection as CSV… saves a dated CSV file with all metadata expanded — including pressing credits, personnel, barcodes, and liner notes
 
 ### 🖼️ Cover Art & Artwork
 - Cover art fetched from the Discogs release endpoint using the primary front-cover image
@@ -70,25 +71,24 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Clear all history button with confirmation
 
 ### 🏠 Home Dashboard
-- Three-column layout: Last Played + Recent Plays | Suggested Spins + Album Anniversary | Listening Queue
-- **Last Played**: cover art, artist/title, play timestamp, metadata grid, full tracklist — click to jump to album
-- **Most Recently Played**: 15 most recently played distinct albums with thumbnails — click to navigate
+- Three-column layout: Last Played (full detail) | Suggested Spins + Album Anniversary | Listening Queue
+- **Last Played** (full left pane, scrollable): cover art, artist/title, play timestamp, metadata grid (genre, style, year, label, format, country, runtime), complete tracklist (all tracks), Pressing Details, Personnel Credits, Barcodes, and Liner Notes — all in one view
+  - Missing pressing info is auto-synced on load — no manual sync required
+  - Click cover art to navigate directly to the album in the Collection tab
 - **Suggested Spins**: weighted random album suggestion; never-played albums weighted 7×; Log Play and Queue buttons
 - **Album Anniversary**: highlights a random album released exactly 10/20/30/40/50/60 years ago with cover art, anniversary badge, Last.fm summary, and tracklist
 - Logging a play from any panel refreshes all Home tab panels automatically
 
 ### 📥 Listening Queue
-- Persistent across sessions (SQLite-backed), right pane of the Home tab
-- **My Listening Queue** (manual): user-curated ordered list of up to 50 albums
-  - Row: drag handle (⠿), position number, 40px cover thumbnail, artist — title
-  - Drag to reorder; new order persisted immediately
-  - ▶ Log Play logs a play and removes the entry (uses your default turntable); ✕ removes without logging
-  - ↻ Refresh button in the section header
-  - "Clear All" button in the section header
-- **Suggested** (auto): 20 albums not played in 182+ days (or never played), randomised on each load
-  - No duplicate artists — at most one album per artist in the suggestions
-  - Auto-refreshes on launch; ↻ Refresh button for a new random set
-  - ＋ Queue button on each row to add to your personal queue
+- Right pane of the Home tab and Collection tab — persistent across sessions (SQLite-backed)
+- **My Queue** (manual): user-curated ordered list — up to 50 albums
+  - Drag rows to reorder; new order saved immediately
+  - Log Play removes from queue; ✕ removes without logging
+  - ↻ Refresh button in panel header
+- **Suggested** (auto): 20 albums not played in 182+ days (or never played), randomised, no duplicate artists
+  - "＋ My Listening Queue" button on each row
+  - ↻ Refresh button for a new random set
+- Buttons in Now Playing and Suggested Spins columns show "✓ In My Queue" when already queued
 
 ### 📊 Statistics Dashboard
 - **Collection Overview**: total records, unique artists, never-played count, average album runtime
@@ -163,6 +163,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Two-pass query design for suggested album and queue fetches
 - Indexes on artist/title and original_year/year — applied automatically on first launch
 - Sync operations show time estimates before starting
+- Write-behind batch DB optimisations across all sync workers: tracklist/runtime/year in one transaction; MusicBrainz and Last.fm year updates batched every 20 records (~20× fewer lock acquisitions)
 
 ### 🗑️ Uninstall
 - Included `Uninstall VinylTracker.command` script in the DMG (double-click to run)
