@@ -43,11 +43,19 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Full tracklist with vinyl side grouping (Side A, B, C…)
 - Genre and style aggregation
 
+### 🏭 Pressing Details
+- **Pressing Details** section in the Now Playing panel (below tracklist)
+- Displays: country of pressing, mastering/cutting/plating credits, pressing plant and studio info, matrix/runout identifiers (monospace), and release notes
+- Loads instantly from local cache on album select; fetches from Discogs in background on first view
+- Uses stored Discogs release ID (1 API call); falls back to search + release fetch (2 calls) and caches the ID for future efficiency
+- **Tools → Sync Pressing Info**: batch-fetch pressing details for your entire collection with status bar progress
+
 ### ▶️ Now Playing Panel
 - Large 360px cover art with placeholder fallback
 - Album details: label, format, year, genre, style
 - Full tracklist grouped by vinyl side
 - Last logged play timestamp
+- Pressing Details section: country, mastering credits, pressing plant, matrix/runout, notes
 - **Log Play** button with optional turntable selection
 - **＋ Queue** button — adds the album to your personal Listening Queue; shows "✓ Queued" when already queued
 
