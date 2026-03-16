@@ -55,6 +55,11 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Loads instantly from local cache on album select; fetches from Discogs in background on first view
 - **Tools → Sync Pressing Info / Personnel Credits / Barcodes**: batch workers with progress and time estimates
 
+### ⏹️ Stop Sync Controls
+- **Per-worker stop buttons** appear inline in the status bar the moment a sync starts: "■ Stop Artwork", "■ Stop Tracklists", "■ Stop Pressing Info", "■ Stop Personnel", "■ Stop Barcodes", "■ Stop MB Years", "■ Stop LFM Years"
+- Buttons disappear immediately when clicked or when the sync completes naturally
+- **■ Stop All** button appears automatically when two or more syncs are running simultaneously
+
 ### ▶️ Now Playing Panel
 - Large 360px cover art with placeholder fallback
 - Album details: label, format, year, genre, style
