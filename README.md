@@ -34,14 +34,14 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 
 ### 🔍 Query Builder
 - Dedicated **Query tab** (⌘4) with seven ready-to-run parameterised query panels:
-  1. **By Artist** — artist dropdown populated from your collection; uses substring matching so selecting "Miles Davis" also returns Miles Davis Quintet, Sextet, etc.
+  1. **By Artist** — artist dropdown populated from your collection; substring matching returns all related ensembles
   2. **By Genre / Style** — genre and style dropdowns with "Any" option
   3. **By Decade** — 50s through 2020s
   4. **Never Played** — one-click, no inputs required
   5. **Most / Least Played** — direction toggle and top-N count
   6. **By Label** — label dropdown populated from your collection
   7. **Not Played Since** — 1 month / 3 months / 6 months / 1 year / 2 years / 3 years
-- Results shown in a resizable table (Artist · Title · Year · Label · Genre) — columns are user-resizable; double-click any row to jump to that album in the Collection tab
+- Results shown in a sortable, resizable table — click any column header to sort ascending/descending; double-click to auto-fit width
 - **⭐ Save** button on each panel prompts for a name and pins the query to Saved Queries
 - **Recent Queries**: last 20 runs shown below the panels — double-click to re-run with the same parameters
 - **Saved Queries**: named pinned queries with ✕ delete — double-click to re-run
@@ -70,7 +70,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - **Tools → Sync Pressing Info / Personnel Credits / Barcodes**: batch workers with progress and time estimates
 
 ### ⏹️ Stop Sync Controls
-- **Per-worker stop buttons** appear inline in the status bar the moment a sync starts: "■ Stop Artwork", "■ Stop Tracklists", "■ Stop Pressing Info", "■ Stop Personnel", "■ Stop Barcodes", "■ Stop MB Years", "■ Stop LFM Years"
+- **Per-worker stop buttons** appear inline in the status bar the moment a sync starts
 - Buttons disappear immediately when clicked or when the sync completes naturally
 - **■ Stop All** button appears automatically when two or more syncs are running simultaneously
 
@@ -79,114 +79,88 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Sections in order: cover → artist/title → Log Play controls → Album Details → Tracklist → Pressing Details → Personnel Credits → Barcodes → Liner Notes
 - **Album Details** metadata grid: Genre · Style · Year · Label · Format · Country · Runtime
 - Full tracklist (all tracks, no cap)
-- Pressing Details, Personnel Credits, Barcodes, and Liner Notes loaded from cache instantly; auto-synced in background if missing — no manual sync required
+- Pressing Details, Personnel Credits, Barcodes, and Liner Notes loaded from cache instantly; auto-synced in background if missing
 - **Log Play** button with turntable selector — pre-selects your default turntable automatically
 - **＋ My Listening Queue** button — adds album to queue; queue panel refreshes immediately
 
 ### 🕹️ Play History
-- Sortable table (date, artist, title, turntable, runtime)
+- Sortable, resizable table (date, artist, title, turntable, runtime) — click any column to sort
+- Columns distribute evenly across the panel on launch; drag to resize, double-click header to auto-fit
 - Multi-select + delete entries
 - Context menu: delete entries, clear all history for album
 - Clear all history button with confirmation
 
 ### 🏠 Home Dashboard
 - Three-column layout: Last Played (full detail) | Suggested Spins + Album Anniversary | Listening Queue
-- **Last Played** (full left pane, scrollable): cover art, artist/title, play timestamp, metadata grid (genre, style, year, label, format, country, runtime), complete tracklist (all tracks), Pressing Details, Personnel Credits, Barcodes, and Liner Notes — all in one view
-  - Missing pressing info is auto-synced on load — no manual sync required
-  - Click cover art to navigate directly to the album in the Collection tab
+- **Last Played** (full left pane, scrollable): cover art, artist/title, play timestamp, metadata grid, complete tracklist, Pressing Details, Personnel Credits, Barcodes, and Liner Notes
 - **Suggested Spins**: weighted random album suggestion; never-played albums weighted 7×; Log Play and Queue buttons
 - **Album Anniversary**: highlights a random album released exactly 10/20/30/40/50/60 years ago with cover art, anniversary badge, Last.fm summary, and tracklist
 - Logging a play from any panel refreshes all Home tab panels automatically
 
 ### 📥 Listening Queue
 - Right pane of the Home tab and Collection tab — persistent across sessions (SQLite-backed)
-- **My Queue** (manual): user-curated ordered list — up to 50 albums
-  - Drag rows to reorder; new order saved immediately
-  - Log Play removes from queue; ✕ removes without logging
-  - ↻ Refresh button in panel header
-- **Suggested** (auto): 20 albums not played in 182+ days (or never played), randomised, no duplicate artists
-  - "＋ My Listening Queue" button on each row
-  - ↻ Refresh button for a new random set
-- Buttons in Now Playing and Suggested Spins columns show "✓ In My Queue" when already queued
+- **My Queue** (manual): user-curated ordered list — up to 50 albums; drag to reorder
+- **Suggested** (auto): 20 albums not played in 182+ days, randomised, no duplicate artists
+- Buttons show "✓ In My Queue" when already queued
 
 ### 📊 Statistics Dashboard
 - **8 metric cards** always visible at the top: total records, unique artists, never-played count, average album runtime, total plays, total listening time, plays this month, best month ever
-- **Three chart sub-tabs** below the metric cards:
-  - **Collection** — Genre breakdown donut, Collection by Decade bar, Collection by Artist horizontal bar (top 15 artists with variant deduplication — e.g. "Miles Davis Quintet" counted under "Miles Davis"; "Various" excluded), Lacquer/Cutting Engineers horizontal bar (top 5 from pressing info)
-  - **Play History** — Top Artists horizontal bar (top 10 by play count), Top Albums horizontal bar (top 10), Plays by Month bar (last 12 months), Plays by Day of Week bar (Mon–Sun), Plays by Genre horizontal bar
-  - **Recent** — last 10 albums added to your collection with artist, title, year, and date added
-- Refresh button to reload all stats and redraw all charts on demand
+- **Two chart sub-tabs:**
+  - **Collection** — Genre breakdown donut, Collection by Decade bar, Collection by Artist horizontal bar (top 15, variant deduplication), Lacquer/Cutting Engineers horizontal bar (top 5)
+  - **Play History** — Top Artists, Top Albums, Plays by Month, Plays by Day of Week, Plays by Genre; fully scrollable with trackpad/mouse wheel
+- Refresh button to reload all stats on demand
 
 ### 🎂 Album Anniversary Panel
-- Highlights a random album from your collection released exactly 10, 20, 30, 40, 50, or 60 years ago
-- Anniversary based on the original first release year (MusicBrainz primary, Last.fm secondary — never Discogs date)
-- Large centered 220px cover art, anniversary badge ("🎉 N Year Anniversary · YYYY"), metadata grid, Last.fm album summary, and full tracklist
-- Random selection on each launch; Refresh (↻) button for another pick from the same year set
+- Highlights a random album released exactly 10, 20, 30, 40, 50, or 60 years ago
+- Large centered 220px cover art, anniversary badge, metadata grid, Last.fm summary, and full tracklist
+- Random selection on each launch; Refresh (↻) button for another pick
 - Click cover art to navigate to that record in the Collection tab
 
 ### 🗓️ Release Date Sync
-- **Tools → Fetch MusicBrainz Release Dates**: batch cross-references your entire collection against MusicBrainz; stores original first-release year; progress shown in status bar; updates collection table in real time
-- **Tools → Fetch Last.fm Release Dates**: batch fetch from Last.fm album.getInfo; only updates records with no MusicBrainz year (preserving MB-first priority)
+- **Tools → Fetch MusicBrainz Release Dates**: batch cross-reference against MusicBrainz; progress in status bar
+- **Tools → Fetch Last.fm Release Dates**: batch fetch, preserving MB-first priority
 
 ### 💾 Database Backup & Restore
-- **Collection → Backup Database…**: hot-copies the live database to any file you choose — safe while the app is running; filename auto-stamped with date and time
-- **Collection → Restore from Backup…**: validates the file, asks for confirmation, replaces the live database, and reloads your collection in-place
-- **Import dialog**: "Restore from Backup" third tab available on first launch — restore a backup as your initial data instead of syncing from Discogs or importing a CSV
+- **Collection → Backup Database…**: hot-copies the live database, auto-stamped with date and time
+- **Collection → Restore from Backup…**: validates, confirms, replaces, and reloads in-place
+- Restore from backup also available on first launch
 
 ### 🎛️ Turntable Management
 - Add, edit, and delete turntables (manufacturer, model, cartridge, stylus)
-- **Set as Default**: mark one turntable as the default — it's pre-selected in the Now Playing combo and used automatically when logging plays from the queue (★ shown in the turntable list)
-- Per-play turntable tracking
-- Play count and total listening hours per turntable
+- **Set as Default**: pre-selected in Now Playing and used automatically when logging plays from queue
+- Per-play turntable tracking with total play count and listening hours
 
 ### 🤖 AI Chat Assistant
-- Dedicated **Ask AI** tab (⌘5) powered by the Claude API (Sonnet) with streaming responses
-- Five selectable offline local models (Apple Silicon via MLX):
-  - Llama 3.2 3B 4-bit (~1.8 GB) — balanced quality/speed
-  - Qwen 2.5 3B 4-bit (~1.8 GB) — stronger structured-data Q&A
-  - Phi-3.5 Mini 4-bit (~2.2 GB) — Microsoft 3.8B
-  - Gemma 3 4B 4-bit (~2.5 GB) — Google, excellent reasoning
-  - Qwen 2.5 1.5B 4-bit (~1.0 GB) — fastest, ideal for 8 GB RAM Macs
-- Speculative decoding for ~2-3× generation speedup (paired draft models)
-- Persistent model subprocess — stays loaded across tab switches
-- Chart generation (bar/pie) on request
-- Context-aware queries: play history, album lookup, statistics
-- Keyword-filtered album context: only sends matching records instead of your full collection (cuts tokens ~90%)
+- Dedicated **Ask AI** tab (⌘5) powered by Claude API (Sonnet) with streaming responses
+- Five selectable offline local models (Apple Silicon via MLX)
+- Speculative decoding for ~2-3× generation speedup
+- Context-aware queries with keyword-filtered album context (cuts tokens ~90%)
 - **AI can be fully disabled** via Settings → AI Features checkbox
 
 ### 🗂️ Navigation
 - macOS menu bar: Collection, Tools, View (themes), and Tabs menus
 - Keyboard shortcuts: ⌘1 Home · ⌘2 Collection · ⌘3 Statistics · ⌘4 Query · ⌘5 Ask AI · ⌘, Settings
-- **Settings** appears in the VinylTracker macOS app menu (correctly labeled "Settings…" on all macOS versions)
 - **Detachable tabs**: drag, right-click, or use ⌘⇧D to pop any tab into its own window; close to re-dock
-- Main tab bar (Home · Collection · Statistics · Query · Ask AI) is centered in the window
+- Main tab bar centered in the window header
 
 ### ⚙️ Settings & Authentication
 - Discogs username and personal access token storage
-- Claude API key configuration
-- Last.fm API key bundled and auto-stored on first launch
+- Claude API key configuration; Last.fm API key bundled and auto-stored on first launch
 - Backend selection: Claude API or any of the 5 local models
-- **Collection Refresh**: "Always apply changes without preview" checkbox
 - **AI Features toggle**: disable/re-enable the Ask AI tab
 - **Danger Zone**: "Clear All Local Data" removes database, artwork cache, and all model caches
 
 ### 🎨 Appearance
-- **22 selectable color themes**: System, Light, Default (Dark), Warm, Ocean, Purple, Midnight, Sunset, OG Green Console, Rose, Nord, Dracula, Monokai, Espresso, Cherry, Cobalt, Slate, Reggae, Grateful Dead, Queen, Pet Sounds, Metal
+- **22 selectable color themes** including System, Light, Default (Dark), Nord, Dracula, Monokai, and more
 - Theme applies instantly across all widgets and persists across launches
-- macOS standard close behaviour: red X hides the window; clicking the Dock icon restores it
 - Window size, position, and all panel splitter sizes remembered across launches
 - App version number displayed in the main window title bar
-- Skeuomorphic app icon: royal-blue plinth, near-black vinyl, chrome S-curve tonearm with correct headshell offset angle
 
 ### 🚀 Performance
 - SQLite WAL journal mode + 32 MB page cache + 256 MB memory-mapped I/O
 - Two-pass query design for suggested album and queue fetches
-- Indexes on artist/title and original_year/year — applied automatically on first launch
-- Sync operations show time estimates before starting
 - Write-behind batch DB optimisations across all sync workers
 
 ### 🗑️ Uninstall
-- Included `Uninstall VinylTracker.command` script in the DMG (double-click to run)
+- Included `Uninstall VinylTracker.command` script in the DMG
 - Three modes: Complete Uninstall, Remove App Only, or Free Disk Space (AI model caches only)
-- Detects and offers to quit a running instance before removing files
-- Shows disk size of each item and prompts before each deletion
