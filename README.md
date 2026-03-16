@@ -110,13 +110,18 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Buttons in Now Playing and Suggested Spins columns show "✓ In My Queue" when already queued
 
 ### 📊 Statistics Dashboard
-- **Collection Overview**: total records, unique artists, never-played count, average album runtime
-- **Play History Overview**: total plays, total listening time, plays this month, best month ever
-- Most Played Artists and Albums (top 10 each, side by side)
-- Plays by Genre and Plays by Month (last 12 months)
-- Plays by Day of Week breakdown
+- **Collection Overview**: total records, unique artists, never-played count, average album runtime (metric cards)
+- **Play History Overview**: total plays, total listening time, plays this month, best month ever (metric cards)
+- **Matplotlib charts throughout:**
+  - Genre donut chart — collection album count by genre (top 9 genres + Other)
+  - Collection by Decade bar chart — albums spread across decades using original release year
+  - Top Artists horizontal bar chart — top 10 by total play count
+  - Top Albums horizontal bar chart — top 10 by total play count
+  - Plays by Month bar chart — last 12 months of listening history
+  - Plays by Day of Week bar chart — Monday through Sunday
+  - Plays by Genre horizontal bar chart — top 10 genres by play count
 - Recently Added to Collection: last 10 records with artist, title, year, and date added
-- Refresh button to reload all stats on demand
+- Refresh button to reload all stats and redraw all charts on demand
 
 ### 🎂 Album Anniversary Panel
 - Highlights a random album from your collection released exactly 10, 20, 30, 40, 50, or 60 years ago
@@ -160,6 +165,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Keyboard shortcuts: ⌘1 Home · ⌘2 Collection · ⌘3 Statistics · ⌘4 Query · ⌘5 Ask AI · ⌘, Settings
 - **Settings** appears in the VinylTracker macOS app menu (correctly labeled "Settings…" on all macOS versions)
 - **Detachable tabs**: drag, right-click, or use ⌘⇧D to pop any tab into its own window; close to re-dock
+- Tab bar tabs are centered in the window header
 
 ### ⚙️ Settings & Authentication
 - Discogs username and personal access token storage
