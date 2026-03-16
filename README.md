@@ -34,14 +34,14 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 
 ### 🔍 Query Builder
 - Dedicated **Query tab** (⌘4) with seven ready-to-run parameterised query panels:
-  1. **By Artist** — artist dropdown populated from your collection
+  1. **By Artist** — artist dropdown populated from your collection; uses substring matching so selecting "Miles Davis" also returns Miles Davis Quintet, Sextet, etc.
   2. **By Genre / Style** — genre and style dropdowns with "Any" option
   3. **By Decade** — 50s through 2020s
   4. **Never Played** — one-click, no inputs required
   5. **Most / Least Played** — direction toggle and top-N count
   6. **By Label** — label dropdown populated from your collection
   7. **Not Played Since** — 1 month / 3 months / 6 months / 1 year / 2 years / 3 years
-- Results shown in a read-only table (Artist · Title · Year · Label · Genre) — double-click any row to jump directly to that album in the Collection tab
+- Results shown in a resizable table (Artist · Title · Year · Label · Genre) — columns are user-resizable; double-click any row to jump to that album in the Collection tab
 - **⭐ Save** button on each panel prompts for a name and pins the query to Saved Queries
 - **Recent Queries**: last 20 runs shown below the panels — double-click to re-run with the same parameters
 - **Saved Queries**: named pinned queries with ✕ delete — double-click to re-run
@@ -110,17 +110,11 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Buttons in Now Playing and Suggested Spins columns show "✓ In My Queue" when already queued
 
 ### 📊 Statistics Dashboard
-- **Collection Overview**: total records, unique artists, never-played count, average album runtime (metric cards)
-- **Play History Overview**: total plays, total listening time, plays this month, best month ever (metric cards)
-- **Matplotlib charts throughout:**
-  - Genre donut chart — collection album count by genre (top 9 genres + Other)
-  - Collection by Decade bar chart — albums spread across decades using original release year
-  - Top Artists horizontal bar chart — top 10 by total play count
-  - Top Albums horizontal bar chart — top 10 by total play count
-  - Plays by Month bar chart — last 12 months of listening history
-  - Plays by Day of Week bar chart — Monday through Sunday
-  - Plays by Genre horizontal bar chart — top 10 genres by play count
-- Recently Added to Collection: last 10 records with artist, title, year, and date added
+- **8 metric cards** always visible at the top: total records, unique artists, never-played count, average album runtime, total plays, total listening time, plays this month, best month ever
+- **Three chart sub-tabs** below the metric cards:
+  - **Collection** — Genre breakdown donut, Collection by Decade bar, Collection by Artist horizontal bar (top 15 artists with variant deduplication — e.g. "Miles Davis Quintet" counted under "Miles Davis"; "Various" excluded), Lacquer/Cutting Engineers horizontal bar (top 5 from pressing info)
+  - **Play History** — Top Artists horizontal bar (top 10 by play count), Top Albums horizontal bar (top 10), Plays by Month bar (last 12 months), Plays by Day of Week bar (Mon–Sun), Plays by Genre horizontal bar
+  - **Recent** — last 10 albums added to your collection with artist, title, year, and date added
 - Refresh button to reload all stats and redraw all charts on demand
 
 ### 🎂 Album Anniversary Panel
@@ -165,7 +159,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Keyboard shortcuts: ⌘1 Home · ⌘2 Collection · ⌘3 Statistics · ⌘4 Query · ⌘5 Ask AI · ⌘, Settings
 - **Settings** appears in the VinylTracker macOS app menu (correctly labeled "Settings…" on all macOS versions)
 - **Detachable tabs**: drag, right-click, or use ⌘⇧D to pop any tab into its own window; close to re-dock
-- Tab bar tabs are centered in the window header
+- Main tab bar (Home · Collection · Statistics · Query · Ask AI) is centered in the window
 
 ### ⚙️ Settings & Authentication
 - Discogs username and personal access token storage
@@ -181,6 +175,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Theme applies instantly across all widgets and persists across launches
 - macOS standard close behaviour: red X hides the window; clicking the Dock icon restores it
 - Window size, position, and all panel splitter sizes remembered across launches
+- App version number displayed in the main window title bar
 - Skeuomorphic app icon: royal-blue plinth, near-black vinyl, chrome S-curve tonearm with correct headshell offset angle
 
 ### 🚀 Performance
