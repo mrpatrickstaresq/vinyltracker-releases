@@ -28,6 +28,8 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Real-time search filtering across artist, title, genre, style, and label
 - Sortable table view with live record count display
 - Context menu to clear play history per album
+- **Refresh Collection** syncs your Discogs collection and shows a preview dialog before saving any changes — lists new records (green), removed records (red), and metadata updates (amber) with Accept or Keep As-Is buttons
+- "Always apply changes without preview" option in Settings to skip the diff dialog and apply immediately
 
 ### 🖼️ Cover Art & Artwork
 - Cover art fetched from the Discogs release endpoint using the primary front-cover image
@@ -46,40 +48,39 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 ### 🏭 Pressing Details
 - **Pressing Details** section in the Now Playing panel (below tracklist)
 - Displays: country of pressing, mastering/cutting/plating credits, pressing plant and studio info, matrix/runout identifiers (monospace), and release notes
+- **Personnel** sub-section: producer, engineer, performer, writer, and photographer credits
+- **Barcodes** sub-section: all barcode identifiers for the pressing
+- **Liner Notes** sub-section: full release notes text
 - Loads instantly from local cache on album select; fetches from Discogs in background on first view
 - Uses stored Discogs release ID (1 API call); falls back to search + release fetch (2 calls) and caches the ID for future efficiency
 - **Tools → Sync Pressing Info**: batch-fetch pressing details for your entire collection with status bar progress
+- **Tools → Sync Personnel Credits**: batch-fetch personnel credits for records missing them
+- **Tools → Sync Barcodes**: batch-fetch barcode data for records missing it
 
 ### ▶️ Now Playing Panel
 - Large 360px cover art with placeholder fallback
 - Album details: label, format, year, genre, style
 - Full tracklist grouped by vinyl side
 - Last logged play timestamp
-- Pressing Details section: country, mastering credits, pressing plant, matrix/runout, notes
+- Pressing Details section: country, mastering credits, pressing plant, matrix/runout, personnel, barcodes, liner notes
 - **Log Play** button with optional turntable selection
 - **＋ Queue** button — adds the album to your personal Listening Queue; shows "✓ Queued" when already queued
 
-### 📋 Play History
+### 🕹️ Play History
 - Sortable table (date, artist, title, turntable, runtime)
-- Multi-select and delete entries
-- Context menu: delete entries or clear all history for an album
+- Multi-select + delete entries
+- Context menu: delete entries, clear all history for album
 - Clear all history button with confirmation
 
 ### 🏠 Home Dashboard
-Three-column layout as the default launch tab:
+- Three-column layout: Last Played + Recent Plays | Suggested Spins + Album Anniversary | Listening Queue
+- **Last Played**: cover art, artist/title, play timestamp, metadata grid, full tracklist — click to jump to album
+- **Most Recently Played**: 15 most recently played distinct albums with thumbnails — click to navigate
+- **Suggested Spins**: weighted random album suggestion; never-played albums weighted 7×; Log Play and Queue buttons
+- **Album Anniversary**: highlights a random album released exactly 10/20/30/40/50/60 years ago with cover art, anniversary badge, Last.fm summary, and tracklist
+- Logging a play from any panel refreshes all Home tab panels automatically
 
-**Left pane** (user-resizable splitter):
-- *Last Played* — cover art, artist/title, play timestamp, metadata grid, full tracklist; click cover to jump to that record
-- *Most Recently Played 15 Albums* — scrollable list of your 15 most recently played distinct albums with 40px cover thumbnails; click any row to navigate to that album
-
-**Center pane** (user-resizable splitter):
-- *Suggested Spins* — random album suggestion ("You be the algorithm!"); never-played albums weighted 7×, albums unplayed 6+ months weighted 3×; Log Play, Skip, and ＋ Queue buttons; shows "Never been played" or "Last played N days ago"; auto-advances after logging; full tracklist shown
-- *Album Anniversary* — highlights an album released exactly 10/20/30/40/50/60 years ago; large 220px cover, anniversary badge, Last.fm summary, full tracklist; Refresh button for another pick; click cover to navigate
-
-**Right pane:**
-- *Listening Queue* (see below)
-
-### 🎧 Listening Queue
+### 📥 Listening Queue
 - Persistent across sessions (SQLite-backed), right pane of the Home tab
 - **My Listening Queue** (manual): user-curated ordered list of up to 50 albums
   - Row: drag handle (⠿), position number, 40px cover thumbnail, artist — title
@@ -142,6 +143,7 @@ Three-column layout as the default launch tab:
 ### 🗂️ Navigation
 - macOS menu bar: Collection, Tools, View (themes), and Tabs menus
 - Keyboard shortcuts: ⌘1–4 to switch tabs, ⌘, for Settings
+- **Settings** appears in the VinylTracker macOS app menu (standard ⌘, position) in addition to the Tools menu
 - **Detachable tabs** — three ways to pop any tab into its own window:
   - Drag a tab outside the tab bar
   - Right-click a tab → "Open in New Window"
@@ -154,6 +156,7 @@ Three-column layout as the default launch tab:
 - Claude API key configuration
 - Last.fm API key bundled and auto-stored on first launch (no user configuration required)
 - Backend selection: Claude API or any of the 5 local models
+- **Collection Refresh**: "Always apply changes without preview" checkbox — skip the diff dialog and apply changes immediately
 - **AI Features toggle**: checkbox to disable all AI functionality and remove the Ask AI tab; re-enable to restore
 - **Danger Zone**: "Clear All Local Data" removes the database, artwork cache, and all downloaded model caches, then quits
 
