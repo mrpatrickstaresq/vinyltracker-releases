@@ -32,6 +32,20 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - "Always apply changes without preview" option in Settings to skip the diff dialog and apply immediately
 - **Export Collection as CSV**: Collection → Export Collection as CSV… saves a dated CSV file with all metadata expanded — including pressing credits, personnel, barcodes, and liner notes
 
+### 🔍 Query Builder
+- Dedicated **Query tab** (⌘4) with seven ready-to-run parameterised query panels:
+  1. **By Artist** — artist dropdown populated from your collection
+  2. **By Genre / Style** — genre and style dropdowns with "Any" option
+  3. **By Decade** — 50s through 2020s
+  4. **Never Played** — one-click, no inputs required
+  5. **Most / Least Played** — direction toggle and top-N count
+  6. **By Label** — label dropdown populated from your collection
+  7. **Not Played Since** — 1 month / 3 months / 6 months / 1 year / 2 years / 3 years
+- Results shown in a read-only table (Artist · Title · Year · Label · Genre) — double-click any row to jump directly to that album in the Collection tab
+- **⭐ Save** button on each panel prompts for a name and pins the query to Saved Queries
+- **Recent Queries**: last 20 runs shown below the panels — double-click to re-run with the same parameters
+- **Saved Queries**: named pinned queries with ✕ delete — double-click to re-run
+
 ### 🖼️ Cover Art & Artwork
 - Cover art fetched from the Discogs release endpoint using the primary front-cover image
 - Falls back to MusicBrainz / Cover Art Archive as a secondary source
@@ -49,7 +63,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 ### 🏭 Pressing Details
 - **Pressing Details** section in the Now Playing panel (below tracklist)
 - Displays: country of pressing, mastering/cutting/plating credits, pressing plant and studio info, matrix/runout identifiers (monospace), and release notes
-- **Personnel** sub-section: producer, engineer, performer, writer, and photographer credits
+- **Personnel** sub-section: name (left, bold) and role/instruments (right, dim) — wraps on resize
 - **Barcodes** sub-section: all barcode identifiers for the pressing
 - **Liner Notes** sub-section: full release notes text
 - Loads instantly from local cache on album select; fetches from Discogs in background on first view
@@ -127,7 +141,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Play count and total listening hours per turntable
 
 ### 🤖 AI Chat Assistant
-- Dedicated **Ask AI** tab powered by the Claude API (Sonnet) with streaming responses
+- Dedicated **Ask AI** tab (⌘5) powered by the Claude API (Sonnet) with streaming responses
 - Five selectable offline local models (Apple Silicon via MLX):
   - Llama 3.2 3B 4-bit (~1.8 GB) — balanced quality/speed
   - Qwen 2.5 3B 4-bit (~1.8 GB) — stronger structured-data Q&A
@@ -143,7 +157,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 
 ### 🗂️ Navigation
 - macOS menu bar: Collection, Tools, View (themes), and Tabs menus
-- Keyboard shortcuts: ⌘1–4 to switch tabs, ⌘, for Settings
+- Keyboard shortcuts: ⌘1 Home · ⌘2 Collection · ⌘3 Statistics · ⌘4 Query · ⌘5 Ask AI · ⌘, Settings
 - **Settings** appears in the VinylTracker macOS app menu (correctly labeled "Settings…" on all macOS versions)
 - **Detachable tabs**: drag, right-click, or use ⌘⇧D to pop any tab into its own window; close to re-dock
 
