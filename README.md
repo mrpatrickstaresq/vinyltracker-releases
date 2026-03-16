@@ -36,8 +36,8 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Falls back to MusicBrainz / Cover Art Archive as a secondary source
 - Per-record on-demand background fetch when an album is selected
 - Background batch sync for missing artwork — pre-checks the database to avoid redundant API calls
-- **Tools → Sync Album Artwork**: fetches art only for records missing it, with status bar progress
-- **Tools → Sync Tracklists**: fetches tracklists only for records missing them
+- **Tools → Sync Album Artwork**: fetches art only for records missing it, with status bar progress and time estimate
+- **Tools → Sync Tracklists**: fetches tracklists only for records missing them, with time estimate
 
 ### 🎵 Metadata Enrichment
 - Original release year sourced from MusicBrainz (first-release-date); falls back to Last.fm — Discogs year ignored
@@ -52,10 +52,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - **Barcodes** sub-section: all barcode identifiers for the pressing
 - **Liner Notes** sub-section: full release notes text
 - Loads instantly from local cache on album select; fetches from Discogs in background on first view
-- Uses stored Discogs release ID (1 API call); falls back to search + release fetch (2 calls) and caches the ID for future efficiency
-- **Tools → Sync Pressing Info**: batch-fetch pressing details for your entire collection with status bar progress
-- **Tools → Sync Personnel Credits**: batch-fetch personnel credits for records missing them
-- **Tools → Sync Barcodes**: batch-fetch barcode data for records missing it
+- **Tools → Sync Pressing Info / Personnel Credits / Barcodes**: batch workers with progress and time estimates
 
 ### ▶️ Now Playing Panel
 - Large 360px cover art with placeholder fallback
@@ -63,8 +60,8 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Full tracklist grouped by vinyl side
 - Last logged play timestamp
 - Pressing Details section: country, mastering credits, pressing plant, matrix/runout, personnel, barcodes, liner notes
-- **Log Play** button with optional turntable selection
-- **＋ Queue** button — adds the album to your personal Listening Queue; shows "✓ Queued" when already queued
+- **Log Play** button with turntable selector — pre-selects your default turntable automatically
+- **＋ My Listening Queue** button — adds album to queue; queue panel refreshes immediately
 
 ### 🕹️ Play History
 - Sortable table (date, artist, title, turntable, runtime)
@@ -85,7 +82,8 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - **My Listening Queue** (manual): user-curated ordered list of up to 50 albums
   - Row: drag handle (⠿), position number, 40px cover thumbnail, artist — title
   - Drag to reorder; new order persisted immediately
-  - ▶ Log Play logs a play and removes the entry; ✕ removes without logging
+  - ▶ Log Play logs a play and removes the entry (uses your default turntable); ✕ removes without logging
+  - ↻ Refresh button in the section header
   - "Clear All" button in the section header
 - **Suggested** (auto): 20 albums not played in 182+ days (or never played), randomised on each load
   - No duplicate artists — at most one album per artist in the suggestions
@@ -117,6 +115,12 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - **Collection → Restore from Backup…**: validates the file, asks for confirmation, replaces the live database, and reloads your collection in-place
 - **Import dialog**: "Restore from Backup" third tab available on first launch — restore a backup as your initial data instead of syncing from Discogs or importing a CSV
 
+### 🎛️ Turntable Management
+- Add, edit, and delete turntables (manufacturer, model, cartridge, stylus)
+- **Set as Default**: mark one turntable as the default — it's pre-selected in the Now Playing combo and used automatically when logging plays from the queue (★ shown in the turntable list)
+- Per-play turntable tracking
+- Play count and total listening hours per turntable
+
 ### 🤖 AI Chat Assistant
 - Dedicated **Ask AI** tab powered by the Claude API (Sonnet) with streaming responses
 - Five selectable offline local models (Apple Silicon via MLX):
@@ -130,56 +134,36 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Chart generation (bar/pie) on request
 - Context-aware queries: play history, album lookup, statistics
 - Keyword-filtered album context: only sends matching records instead of your full collection (cuts tokens ~90%)
-  - Bigram extraction catches multi-word artist/album names (Pink Floyd, Miles Davis, etc.)
-  - Decade detection: "70s", "1970s", "seventies" → year-range filter applied to query
-  - Fallback: collections ≤ 75 records always get the full list
-- **AI can be fully disabled** via Settings → AI Features checkbox — removes the Ask AI tab and all AI functionality; re-enabling restores everything instantly
-
-### 🎛️ Turntable Management
-- Add, edit, and delete turntables (manufacturer, model, cartridge, stylus)
-- Per-play turntable tracking
-- Play count and total listening hours per turntable
+- **AI can be fully disabled** via Settings → AI Features checkbox
 
 ### 🗂️ Navigation
 - macOS menu bar: Collection, Tools, View (themes), and Tabs menus
 - Keyboard shortcuts: ⌘1–4 to switch tabs, ⌘, for Settings
-- **Settings** appears in the VinylTracker macOS app menu (standard ⌘, position) in addition to the Tools menu
-- **Detachable tabs** — three ways to pop any tab into its own window:
-  - Drag a tab outside the tab bar
-  - Right-click a tab → "Open in New Window"
-  - Tabs menu → "Detach Current Tab" (⌘⇧D)
-  - Closing the detached window re-docks the tab back into the main bar
-  - "Reattach All Windows" in the Tabs menu re-docks all floating tabs at once
+- **Settings** appears in the VinylTracker macOS app menu with correct "Settings…" label
+- **Detachable tabs**: drag, right-click, or use ⌘⇧D to pop any tab into its own window
 
 ### ⚙️ Settings & Authentication
 - Discogs username and personal access token storage
 - Claude API key configuration
-- Last.fm API key bundled and auto-stored on first launch (no user configuration required)
+- Last.fm API key bundled and auto-stored on first launch
 - Backend selection: Claude API or any of the 5 local models
-- **Collection Refresh**: "Always apply changes without preview" checkbox — skip the diff dialog and apply changes immediately
-- **AI Features toggle**: checkbox to disable all AI functionality and remove the Ask AI tab; re-enable to restore
-- **Danger Zone**: "Clear All Local Data" removes the database, artwork cache, and all downloaded model caches, then quits
+- **Collection Refresh**: "Always apply changes without preview" checkbox
+- **AI Features toggle**: disable/re-enable the Ask AI tab
+- **Danger Zone**: "Clear All Local Data" removes database, artwork cache, and all model caches
 
 ### 🎨 Appearance
-- **19 selectable color themes**: System, Light, Default, Warm, Ocean, Purple, Midnight, Sunset, OG Green Console, Rose, Nord, Dracula, Monokai, Espresso, Cherry, Cobalt, Slate, Reggae, Metal
+- **22 selectable color themes**: System, Light, Default (Dark), Warm, Ocean, Purple, Midnight, Sunset, OG Green Console, Rose, Nord, Dracula, Monokai, Espresso, Cherry, Cobalt, Slate, Reggae, Grateful Dead, Queen, Pet Sounds, Metal
 - Theme applies instantly across all widgets and persists across launches
 - macOS standard close behaviour: red X hides the window; clicking the Dock icon restores it
 - Window size, position, and all panel splitter sizes remembered across launches
-- Large, readable fonts throughout (18–20pt artist names, 28px metric cards)
-- Skeuomorphic app icon: royal-blue plinth, near-black vinyl, chrome S-curve tonearm with correct headshell offset angle
+- Skeuomorphic app icon: royal-blue plinth, near-black vinyl, chrome S-curve tonearm
 
 ### 🚀 Performance
-- SQLite WAL journal mode: readers never block background writers
-- 32 MB page cache — hot pages stay in RAM between queries
-- 256 MB memory-mapped I/O — large cover art BLOBs stream via kernel mapping
-- Two-pass query design for suggested album and queue fetches (metadata first, BLOBs only for final rows)
+- SQLite WAL journal mode + 32 MB page cache + 256 MB memory-mapped I/O
+- Two-pass query design for suggested album and queue fetches
 - Indexes on artist/title and original_year/year — applied automatically on first launch
-- Artwork sync: year, runtime, and tracklist written in a single transaction per record
-- Artwork/tracklist batch sync: ~1.1 s/record (authenticated) — safely under Discogs rate limits
+- Sync operations show time estimates before starting
 
 ### 🗑️ Uninstall
 - Included `Uninstall VinylTracker.command` script in the DMG (double-click to run)
 - Three modes: Complete Uninstall, Remove App Only, or Free Disk Space (AI model caches only)
-- Detects and offers to quit a running instance before removing files
-- Shows disk size of each item and prompts before each deletion
-- Detects and offers removal of any other Hugging Face model caches on the machine
