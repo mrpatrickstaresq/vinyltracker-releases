@@ -85,7 +85,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 
 ### 🕹️ Play History
 - Sortable, resizable table (date, artist, title, turntable, runtime) — click any column to sort
-- Columns distribute evenly across the panel on launch; drag to resize, double-click header to auto-fit
+- Column widths are proportional: date and runtime columns are sized to their content; artist and title split the remaining space equally; drag to resize, double-click header to auto-fit
 - Multi-select + delete entries
 - Context menu: delete entries, clear all history for album
 - Clear all history button with confirmation
@@ -108,6 +108,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - **Two chart sub-tabs:**
   - **Collection** — Genre breakdown donut, Collection by Decade bar, Collection by Artist horizontal bar (top 15, variant deduplication), Lacquer/Cutting Engineers horizontal bar (top 5)
   - **Play History** — Top Artists, Top Albums, Plays by Month, Plays by Day of Week, Plays by Genre; fully scrollable with trackpad/mouse wheel
+- All bar charts use the full color palette per bar for clear visual delineation between values
 - Refresh button to reload all stats on demand
 
 ### 🎂 Album Anniversary Panel
