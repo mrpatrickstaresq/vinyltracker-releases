@@ -139,8 +139,8 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 ### 🗂️ Navigation
 - macOS menu bar: Collection, Tools, View (themes), and Tabs menus
 - Keyboard shortcuts: ⌘1–4 to switch tabs, ⌘, for Settings
-- **Settings** appears in the VinylTracker macOS app menu with correct "Settings…" label
-- **Detachable tabs**: drag, right-click, or use ⌘⇧D to pop any tab into its own window
+- **Settings** appears in the VinylTracker macOS app menu (correctly labeled "Settings…" on all macOS versions)
+- **Detachable tabs**: drag, right-click, or use ⌘⇧D to pop any tab into its own window; close to re-dock
 
 ### ⚙️ Settings & Authentication
 - Discogs username and personal access token storage
@@ -156,7 +156,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Theme applies instantly across all widgets and persists across launches
 - macOS standard close behaviour: red X hides the window; clicking the Dock icon restores it
 - Window size, position, and all panel splitter sizes remembered across launches
-- Skeuomorphic app icon: royal-blue plinth, near-black vinyl, chrome S-curve tonearm
+- Skeuomorphic app icon: royal-blue plinth, near-black vinyl, chrome S-curve tonearm with correct headshell offset angle
 
 ### 🚀 Performance
 - SQLite WAL journal mode + 32 MB page cache + 256 MB memory-mapped I/O
@@ -167,3 +167,5 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 ### 🗑️ Uninstall
 - Included `Uninstall VinylTracker.command` script in the DMG (double-click to run)
 - Three modes: Complete Uninstall, Remove App Only, or Free Disk Space (AI model caches only)
+- Detects and offers to quit a running instance before removing files
+- Shows disk size of each item and prompts before each deletion
