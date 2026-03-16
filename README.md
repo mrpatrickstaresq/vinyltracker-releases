@@ -111,6 +111,11 @@ Three-column layout as the default launch tab:
 - **Tools → Fetch MusicBrainz Release Dates**: batch cross-references your entire collection against MusicBrainz; stores original first-release year; progress shown in status bar; updates collection table in real time
 - **Tools → Fetch Last.fm Release Dates**: batch fetch from Last.fm album.getInfo; only updates records with no MusicBrainz year (preserving MB-first priority)
 
+### 💾 Database Backup & Restore
+- **Collection → Backup Database…**: hot-copies the live database to any file you choose — safe while the app is running; filename auto-stamped with date and time
+- **Collection → Restore from Backup…**: validates the file, asks for confirmation, replaces the live database, and reloads your collection in-place
+- **Import dialog**: "Restore from Backup" third tab available on first launch — restore a backup as your initial data instead of syncing from Discogs or importing a CSV
+
 ### 🤖 AI Chat Assistant
 - Dedicated **Ask AI** tab powered by the Claude API (Sonnet) with streaming responses
 - Five selectable offline local models (Apple Silicon via MLX):
@@ -158,7 +163,7 @@ Three-column layout as the default launch tab:
 - macOS standard close behaviour: red X hides the window; clicking the Dock icon restores it
 - Window size, position, and all panel splitter sizes remembered across launches
 - Large, readable fonts throughout (18–20pt artist names, 28px metric cards)
-- Skeuomorphic app icon: royal-blue plinth, near-black vinyl, chrome tonearm
+- Skeuomorphic app icon: royal-blue plinth, near-black vinyl, chrome S-curve tonearm with correct headshell offset angle
 
 ### 🚀 Performance
 - SQLite WAL journal mode: readers never block background writers
@@ -166,6 +171,7 @@ Three-column layout as the default launch tab:
 - 256 MB memory-mapped I/O — large cover art BLOBs stream via kernel mapping
 - Two-pass query design for suggested album and queue fetches (metadata first, BLOBs only for final rows)
 - Indexes on artist/title and original_year/year — applied automatically on first launch
+- Artwork sync: year, runtime, and tracklist written in a single transaction per record
 - Artwork/tracklist batch sync: ~1.1 s/record (authenticated) — safely under Discogs rate limits
 
 ### 🗑️ Uninstall
