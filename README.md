@@ -53,8 +53,9 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Cover art fetched from Discogs using the primary front-cover image; falls back to MusicBrainz / Cover Art Archive
 - Per-record on-demand background fetch; batch sync for missing artwork
 - **Tools → Sync Album Artwork / Sync Tracklists**: targeted workers with status bar progress
-- **iTunes Search API** used as the primary artwork source: no auth, no rate limit, 600×600 JPEG from Apple CDN — records found via iTunes incur no rate-limit sleep at all
-- Source priority: iTunes → Discogs → MusicBrainz/Cover Art Archive
+- **Tools → Sync Album Artwork from Apple**: iTunes-powered, no rate limit, covers most mainstream releases instantly
+- **Tools → Sync Album Artwork from Discogs**: for obscure or rare releases Apple doesn't have; uses Discogs with MusicBrainz/Cover Art Archive as fallback
+- On first launch after import, the missing artwork prompt offers Apple sync with Discogs as a follow-up option
 - Artwork sync year fetching removed; handled separately by dedicated year sync workers
 - **Tracklist sync** uses cached Discogs release ID (from pressing info sync) to skip the search step — 1 API call instead of 2 for already-synced records
 
