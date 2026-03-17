@@ -53,6 +53,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Cover art fetched from Discogs using the primary front-cover image; falls back to MusicBrainz / Cover Art Archive
 - Per-record on-demand background fetch; batch sync for missing artwork
 - **Tools → Sync Album Artwork / Sync Tracklists**: targeted workers with status bar progress
+- Artwork sync does exactly 2 API calls per record (search + image); year fetching is handled separately by the dedicated year sync workers — roughly 2x faster than before
 
 ### 🎵 Metadata Enrichment
 - Original release year from MusicBrainz; falls back to Last.fm — Discogs year ignored
