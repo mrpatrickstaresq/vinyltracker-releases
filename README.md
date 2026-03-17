@@ -79,6 +79,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - 4 metric cards: Total Plays, Listening Time, This Month, Best Month
 - Filter by text search or turntable; Export CSV; multi-select delete
 - Column widths saved between sessions
+- 4 metric cards (Total Plays, Listening Time, This Month, Best Month) stretch to fill the full window width and resize dynamically
 - Charts: Top Artists, Top Albums, Plays by Day of Week, Plays by Genre, Plays by Month (last 12 — always shown last)
 - Compact 20-row summary panel in the Collection tab
 
