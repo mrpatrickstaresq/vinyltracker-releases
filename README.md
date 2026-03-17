@@ -33,7 +33,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - **Export Collection as CSV**: Collection → Export Collection as CSV… saves a dated CSV file with all metadata expanded — including pressing credits, personnel, barcodes, and liner notes
 
 ### 🔍 Query Builder
-- Dedicated **Query tab** (⌘4) with seven ready-to-run parameterised query panels:
+- Dedicated **Query tab** (⌘5) with seven ready-to-run parameterised query panels:
   1. **By Artist** — artist dropdown populated from your collection; substring matching returns all related ensembles
   2. **By Genre / Style** — genre and style dropdowns with "Any" option
   3. **By Decade** — 50s through 2020s
@@ -83,12 +83,12 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - **Log Play** button with turntable selector — pre-selects your default turntable automatically
 - **＋ My Listening Queue** button — adds album to queue; queue panel refreshes immediately
 
-### 🕹️ Play History
-- Sortable, resizable table (date, artist, title, turntable, runtime) — click any column to sort
-- Column widths are proportional: date and runtime columns are sized to their content; artist and title split the remaining space equally; drag to resize, double-click header to auto-fit
-- Multi-select + delete entries
-- Context menu: delete entries, clear all history for album
-- Clear all history button with confirmation
+### 📋 Play History
+- Dedicated **Play History tab** (⌘4) with History and Charts sub-tabs
+- **History sub-tab**: 4 metric cards (Total Plays, Listening Time, This Month, Best Month), filter bar (search by artist/title + turntable dropdown), full 6-column sortable table (Played At · Artist · Title · Runtime · Turntable · Genre), multi-select delete, Export CSV, Clear All History
+- **Charts sub-tab**: Top Artists by Plays, Top Albums by Plays, Plays by Month, Plays by Day of Week, Plays by Genre — all scrollable
+- **Collection tab play history panel**: compact 20-row summary (Played At · Artist · Title · Runtime) for quick reference
+- Refreshes automatically when a play is logged from Home or Collection tabs
 
 ### 🏠 Home Dashboard
 - Three-column layout: Last Played (full detail) | Suggested Spins + Album Anniversary | Listening Queue
@@ -104,11 +104,9 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Buttons show "✓ In My Queue" when already queued
 
 ### 📊 Statistics Dashboard
-- **8 metric cards** always visible at the top: total records, unique artists, never-played count, average album runtime, total plays, total listening time, plays this month, best month ever
-- **Two chart sub-tabs:**
-  - **Collection** — Genre breakdown donut, Collection by Decade bar, Collection by Artist horizontal bar (top 15, variant deduplication), Lacquer/Cutting Engineers horizontal bar (top 5)
-  - **Play History** — Top Artists, Top Albums, Plays by Month, Plays by Day of Week, Plays by Genre; fully scrollable with trackpad/mouse wheel
-- All bar charts use the full color palette per bar for clear visual delineation between values
+- 4 collection metric cards: Records, Artists, Never Played, Avg Album Runtime
+- **Collection** chart sub-tab: Genre breakdown donut, Collection by Decade bar, Collection by Artist horizontal bar (top 15), Lacquer/Cutting Engineers horizontal bar (top 5)
+- All charts scrollable; rendered via matplotlib
 - Refresh button to reload all stats on demand
 
 ### 🎂 Album Anniversary Panel
@@ -132,7 +130,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Per-play turntable tracking with total play count and listening hours
 
 ### 🤖 AI Chat Assistant
-- Dedicated **Ask AI** tab (⌘5) powered by Claude API (Sonnet) with streaming responses
+- Dedicated **Ask AI** tab (⌘6) powered by Claude API (Sonnet) with streaming responses
 - Five selectable offline local models (Apple Silicon via MLX)
 - Speculative decoding for ~2-3× generation speedup
 - Context-aware queries with keyword-filtered album context (cuts tokens ~90%)
@@ -140,7 +138,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 
 ### 🗂️ Navigation
 - macOS menu bar: Collection, Tools, View (themes), and Tabs menus
-- Keyboard shortcuts: ⌘1 Home · ⌘2 Collection · ⌘3 Statistics · ⌘4 Query · ⌘5 Ask AI · ⌘, Settings
+- Keyboard shortcuts: ⌘1 Home · ⌘2 Collection · ⌘3 Statistics · ⌘4 Play History · ⌘5 Query · ⌘6 Ask AI · ⌘, Settings
 - **Detachable tabs**: drag, right-click, or use ⌘⇧D to pop any tab into its own window; close to re-dock
 - Main tab bar centered in the window header
 
