@@ -92,9 +92,13 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 
 ### 📊 Statistics Dashboard
 - 4 metric cards: Records, Artists, Never Played, Avg Album Runtime — update live on play logged
-- Genre donut, Decade bar, Collection by Artist, Collection by Label, Lacquer Engineers, New Albums by Month
+- Charts in a 3-row layout:
+  - Row 1: Genre Breakdown donut | Collection by Decade (original release year only — pressing dates excluded)
+  - Row 2: Collection by Artist (Top 20) | Top Lacquer/Cutting Engineers (Top 20)
+  - Row 3: Collection by Label (Top 10) | New Albums Added by Month
+- All charts in each row share equal height for a clean, balanced layout
 - Recently-added album tables (30 days + 12 months)
-- All charts at consistent 300px height; full multicolor palette throughout
+- Full multicolor palette throughout
 
 ### 🎂 Album Anniversary Panel
 - Highlights a random album released exactly 10, 20, 30, 40, 50, or 60 years ago
