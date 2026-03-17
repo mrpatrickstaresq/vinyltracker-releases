@@ -56,6 +56,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - **iTunes Search API** used as the primary artwork source: no auth, no rate limit, 600×600 JPEG from Apple CDN — records found via iTunes incur no rate-limit sleep at all
 - Source priority: iTunes → Discogs → MusicBrainz/Cover Art Archive
 - Artwork sync year fetching removed; handled separately by dedicated year sync workers
+- **Tracklist sync** uses cached Discogs release ID (from pressing info sync) to skip the search step — 1 API call instead of 2 for already-synced records
 
 ### 🎵 Metadata Enrichment
 - Original release year from MusicBrainz; falls back to Last.fm — Discogs year ignored
