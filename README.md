@@ -66,6 +66,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Pressing Details, Personnel Credits, Barcodes, and Liner Notes in the Now Playing panel
 - Loaded instantly from local cache; auto-synced from Discogs in background on first view
 - **Tools → Sync Pressing Info / Personnel Credits / Barcodes**
+- All three sync workers terminate correctly when the API has no data for a record; personnel/barcodes workers never overwrite existing pressing data on a failed retry
 
 ### ▶️ Now Playing Panel
 - Large 360px cover art; full metadata grid, tracklist, and pressing details
