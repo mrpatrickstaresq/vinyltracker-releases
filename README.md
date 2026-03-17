@@ -109,6 +109,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Speculative decoding for ~2-3× generation speedup
 - Context-aware queries with keyword-filtered album context (cuts tokens ~90%)
 - **AI can be fully disabled** via Settings → AI Features checkbox
+- Settings dialog is fully functional on Intel — AI-specific sections are automatically hidden when not applicable
 
 ### 🗂️ Navigation
 - Keyboard shortcuts: ⌘1 Home · ⌘2 Collection · ⌘3 Statistics · ⌘4 Play History · ⌘5 Query · ⌘6 Ask AI · ⌘, Settings
