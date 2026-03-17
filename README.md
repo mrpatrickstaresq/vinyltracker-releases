@@ -20,7 +20,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 
 ## Requirements
 
-- macOS 12 Monterey or later
+- macOS 13 Ventura or later
 
 ---
 
