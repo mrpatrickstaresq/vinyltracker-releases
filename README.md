@@ -84,10 +84,11 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - **＋ My Listening Queue** button — adds album to queue; queue panel refreshes immediately
 
 ### 📋 Play History
-- Dedicated **Play History tab** (⌘4) with History and Charts sub-tabs
-- **History sub-tab**: 4 metric cards (Total Plays, Listening Time, This Month, Best Month), filter bar (search by artist/title + turntable dropdown), full 6-column sortable table (Played At · Artist · Title · Runtime · Turntable · Genre), multi-select delete, Export CSV, Clear All History
-- **Charts sub-tab**: Top Artists by Plays, Top Albums by Plays, Plays by Month, Plays by Day of Week, Plays by Genre — all scrollable
-- **Collection tab play history panel**: compact 20-row summary (Played At · Artist · Title · Runtime) for quick reference
+- Dedicated **Play History tab** (⌘4) with sortable table and charts
+- **Top pane**: 4 metric cards (Total Plays, Listening Time, This Month, Best Month), filter bar (search by artist/title + turntable dropdown), full 6-column sortable table (Played On · Artist · Title · Runtime · Turntable · Genre), multi-select delete, Export CSV, Clear All History
+- **Column widths saved between sessions** — resize once and it sticks; falls back to equal distribution on first launch
+- **Bottom pane**: scrollable charts — Top Artists by Plays, Top Albums by Plays, Plays by Month, Plays by Day of Week, Plays by Genre
+- **Collection tab play history panel**: compact 20-row summary (Played On · Artist · Title · Runtime) for quick reference; column widths also persisted
 - Refreshes automatically when a play is logged from Home or Collection tabs
 
 ### 🏠 Home Dashboard
@@ -104,9 +105,10 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Buttons show "✓ In My Queue" when already queued
 
 ### 📊 Statistics Dashboard
-- 4 collection metric cards: Records, Artists, Never Played, Avg Album Runtime
-- **Collection** chart sub-tab: Genre breakdown donut, Collection by Decade bar, Collection by Artist horizontal bar (top 15), Lacquer/Cutting Engineers horizontal bar (top 5)
-- All charts scrollable; rendered via matplotlib
+- 4 collection metric cards: Records, Artists, Never Played, Avg Album Runtime — **update live when a play is logged**
+- Single scrollable area: Genre breakdown donut, Collection by Decade bar, Collection by Artist (top 20), Collection by Label (top 10), Lacquer/Cutting Engineers (top 10), New Albums by Month, and recently-added album tables
+- All bar charts use the full multicolor palette; all charts rendered at consistent 300px height
+- All charts scrollable via trackpad/mouse wheel; rendered via matplotlib
 - Refresh button to reload all stats on demand
 
 ### 🎂 Album Anniversary Panel
