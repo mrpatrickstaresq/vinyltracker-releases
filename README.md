@@ -37,7 +37,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - **Export Collection as CSV**: saves a dated CSV file with all metadata expanded — including pressing credits, personnel, barcodes, and liner notes
 
 ### 🔍 Query Builder
-- Dedicated **Query tab** (⌘5) with seven ready-to-run parameterised query panels:
+- Dedicated **Query tab** (⌘5) with eight ready-to-run query panels:
   1. **By Artist** — substring matching returns all related ensembles
   2. **By Genre / Style** — genre and style dropdowns with "Any" option
   3. **By Decade** — 50s through 2020s
@@ -45,6 +45,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
   5. **Most / Least Played** — direction toggle and top-N count
   6. **By Label** — label dropdown populated from your collection
   7. **Not Played Since** — 1 month / 3 months / 6 months / 1 year / 2 years / 3 years
+  8. **Advanced** — stack any number of AND conditions: Field | Operator | Value; supports text, year range, play counts, never-played, and not-played-in-N-days filters
 - Results shown in a sortable, resizable table — double-click any row to jump to that album
 - **⭐ Save** button pins named queries; **Recent Queries** shows last 20 runs
 
