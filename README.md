@@ -122,6 +122,8 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 
 ### 🗂️ Navigation
 - Keyboard shortcuts: ⌘1 Home · ⌘2 Collection · ⌘3 Statistics · ⌘4 Play History · ⌘5 Query · ⌘6 Ask AI · ⌘, Settings
+- **Arrow key navigation**: move through any table (Collection, Play History, Query Results) with ↑/↓ — Now Playing panel updates live without switching tabs
+- **Enter key**: jump from any table directly to that album in the Collection tab
 - **Detachable tabs**: drag, right-click, or ⌘⇧D to pop any tab into its own window
 - Centered tab bar; macOS standard close behaviour (hide to Dock)
 
@@ -137,6 +139,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 ### 🚀 Performance
 - SQLite WAL mode + 32 MB page cache + 256 MB memory-mapped I/O
 - Two-pass query design; write-behind batch DB optimisations across all sync workers
+- Deferred heavy imports (AI, charting, ML libraries) — app launches ~3–6 seconds faster; Stats charts built only when the tab is first opened
 
 ### 🗑️ Uninstall
 - Included `Uninstall VinylTracker.command` in the DMG
