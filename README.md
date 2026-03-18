@@ -32,6 +32,8 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Duplicate detection by catalog number or artist/title
 - Real-time search filtering across artist, title, genre, style, and label
 - Sortable table view with live record count display
+- **Drag rows to reorder** your collection manually; custom order persists between sessions — right-click column header to sort, reset via header context menu to re-enable drag
+- Column drag-reorder in all tables; column positions persist between sessions
 - Context menu to clear play history per album
 - **Refresh Collection** syncs your Discogs collection and shows a preview dialog before saving any changes — lists new records (green), removed records (red), and metadata updates (amber) with Accept or Keep As-Is buttons
 - "Always apply changes without preview" option in Settings to skip the diff dialog and apply immediately
@@ -47,7 +49,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
   6. **By Label** — label dropdown populated from your collection
   7. **Not Played Since** — 1 month / 3 months / 6 months / 1 year / 2 years / 3 years
   8. **Advanced** — stack any number of AND conditions: Field | Operator | Value; supports text, year range, play counts, never-played, and not-played-in-N-days filters
-- Results shown in a sortable, resizable table — double-click any row to jump to that album
+- Results shown in a sortable, resizable table — double-click any row to jump to that album; drag column headers to rearrange; order persists between sessions
 - **⭐ Save** button pins named queries; **Recent Queries** shows last 20 runs
 
 ### 🖼️ Cover Art & Artwork
@@ -76,7 +78,7 @@ Drag **VinylTracker.app** from your Applications folder to the Trash. An uninsta
 - Dedicated **Play History tab** (⌘4) — sortable 6-column table (Played On · Artist · Title · Runtime · Turntable · Genre)
 - 4 metric cards: Total Plays, Listening Time, This Month, Best Month — stretch to fill full window width
 - Filter by text search or turntable; Export CSV; multi-select delete
-- Column widths saved between sessions
+- Column widths and drag-reorder order saved between sessions
 - Charts: Top Artists by Plays, Top Albums by Plays, Plays by Day of Week + Genre (side by side), Plays by Month (last 12 months)
 - Compact 20-row summary panel in the Collection tab
 
